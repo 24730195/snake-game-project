@@ -3,5 +3,6 @@
 
 - 24730195 - Phan Thành Hậu
 - 24730247 - Truong Hoang Thanh Vy
+- 24730227 - Le Trong Quy
 
 Update file từ main về branch, thêm thông tin phía sau rồi tạo pull request, fix conflict nếu có trước khi merge
