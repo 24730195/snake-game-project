@@ -15,11 +15,15 @@
 
 | Tên     | Vai trò chính          | Vai trò phụ          |
 
-Hậu
-Quý
-Vy
-Dương
-Tuần
+- Hậu
+  
+- Quý
+
+- Vy
+
+- Dương
+
+- Tuấn
 
 ---
 
