@@ -29,13 +29,15 @@
 
 ## 📁 Cấu trúc thư mục
 
-/main      → Code chính
+/main       → code chính chạy được sau cùng, giữ main sạch
 
-/test      → Code thử, lỗi
+/dev        → nơi để nhóm test, ghép code, fix bug trước khi đưa lên main
 
-/design    → Giao diện, vẽ tay, hình
+/test       → Code test riêng, thử nghiệm, lỗi
 
-/doc       → Slide, báo cáo, video demo
+/design     → Ảnh UI, wireframe, export từ Figma
+
+/doc        → Slide, báo cáo, ghi chú checklist
 
 ---
 
