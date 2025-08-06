@@ -29,9 +29,11 @@
 
 ## 🌿 Các nhánh (Branch)
 
-- `main` → Bản ổn định cuối cùng để demo hoặc nộp  
-- `dev` → Nơi nhóm test, ghép code, fix bug  
-- Nhánh cá nhân → Mỗi người làm việc riêng
+`main` → Bản ổn định cuối cùng để demo hoặc nộp  
+
+`dev` → Nơi nhóm test, ghép code, fix bug  
+
+Nhánh cá nhân → Mỗi người làm việc riêng
 
 ---
 
