@@ -2,15 +2,15 @@
 
 ## 📁 1. Cấu trúc thư mục
 
-/main       → code chính chạy được sau cùng, giữ main sạch
+`/main`       → code chính chạy được sau cùng, giữ main sạch
 
-/dev        → nơi để nhóm test, ghép code, fix bug trước khi đưa lên main
+`/dev`        → nơi để nhóm test, ghép code, fix bug trước khi đưa lên main
 
-/test       → Code test riêng, thử nghiệm, lỗi
+`/test`       → Code test riêng, thử nghiệm, lỗi
 
-/design     → Ảnh UI, wireframe, export từ Figma
+`/design`     → Ảnh UI, wireframe, export từ Figma
 
-/doc        → Slide, báo cáo, ghi chú checklist
+`/doc`        → Slide, báo cáo, ghi chú checklist
 
 ---
 
