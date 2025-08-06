@@ -1,8 +1,60 @@
-# snake-game-project
-Đồ án cuối kì lớp ss004e31
+# 🐍 Snake Game – Đồ án nhóm
 
-- 24730195 - Phan Thành Hậu
-- 24730247 - Truong Hoang Thanh Vy
-- 24730227 - Le Trong Quy
-- 24730186 - Nguyen Thi Thuy Duong
-Update file từ main về branch, thêm thông tin phía sau rồi tạo pull request, fix conflict nếu có trước khi merge
+
+## 🔖 Thông tin dự án
+
+- Môn học: Kỹ năng nghề nghiệp
+
+- Nhóm: 05
+
+- Ngôn ngữ: C++
+
+---
+
+## 👥 Thành viên
+
+| Tên     | Vai trò chính          | Vai trò phụ          |
+
+Hậu
+Quý
+Vy
+Dương
+Tuần
+
+---
+
+## 📁 Cấu trúc thư mục
+
+/main      → Code chính
+
+/test      → Code thử, lỗi
+
+/design    → Giao diện, vẽ tay, hình
+
+/doc       → Slide, báo cáo, video demo
+
+---
+
+## 🧠 Cách làm việc (Workflow)
+
+- Mỗi người làm nhánh riêng
+- Push lên nhánh cá nhân → tạo Pull Request vào `dev`, thêm người Review và người đó check rồi merge khi thấy ổn
+- Chỉ merge `dev` → `main` khi bản ổn định
+
+---
+
+## ▶️ Cách chạy game
+
+(đang cập nhập)
+
+---
+
+## 🐞 Ghi bug
+
+(đang cập nhập)
+
+---
+
+## 📫 Liên hệ nhóm
+
+(đang cập nhập)
