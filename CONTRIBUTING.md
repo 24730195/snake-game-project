@@ -3,8 +3,6 @@
 ## 📁 1. Cấu trúc thư mục
 
 /main       → code chính chạy được sau cùng, giữ main sạch
-├── main.cpp
-├── snake.h
 
 /dev        → nơi để nhóm test, ghép code, fix bug trước khi đưa lên main
 
@@ -23,7 +21,7 @@
 - `dev` → Nhánh phát triển chính
 
 ### Nhánh cá nhân:
-- Format: `thao_tac-người_thực_hiện`
+- Quy tắc: `thao_tac-người_thực_hiện`
 - Ví dụ:
   - `test-hau`
   - `update-readme-vy`
@@ -33,7 +31,7 @@
 
 ## 📝 3. Đặt tên commit
 
-- Format: `[Loại] Mô tả ngắn gọn`
+- Quy tắc: `[Loại] Mô tả ngắn gọn`
 - Các loại phổ biến:
 
 | Loại commit | Ý nghĩa                |
