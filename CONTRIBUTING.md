@@ -4,8 +4,6 @@
 
 `/main`       → code chính chạy được sau cùng, giữ main sạch
 
-`/dev`        → nơi để nhóm test, ghép code, fix bug trước khi đưa lên main
-
 `/test`       → Code test riêng, thử nghiệm, lỗi
 
 `/design`     → Ảnh UI, wireframe, export từ Figma
