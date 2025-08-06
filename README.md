@@ -49,6 +49,16 @@ Nhánh cá nhân → Mỗi người làm việc riêng
 
 ---
 
+## 📚 Tài liệu quan trọng
+
+- [Quy tắc làm việc nhóm](./doc/Quy%20tắc%20làm%20việc%20nhóm.md)
+- [Hệ thống nhãn (labels) và cách dùng](./doc/Hệ%20thống%20nhãn%20(labels)%20...)
+- [Phác thảo ý tưởng làm game](./doc/Phác%20thảo%20ý%20tưởng%20làm%20...)
+- [Hướng dẫn làm Snake](./doc/Hướng%20dẫn%20làm%20Snake%20...)
+- [Báo cáo đồ án (quan trọng)](./doc/Báo%20cáo%20đồ%20án%20(quan%20tr...))
+
+---
+
 ## 🧠 Cách làm việc (Workflow)
 
 - Mỗi người làm nhánh riêng
