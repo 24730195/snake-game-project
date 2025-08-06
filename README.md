@@ -27,11 +27,17 @@
 
 ---
 
+## 🌿 Các nhánh (Branch)
+
+- `main` → Bản ổn định cuối cùng để demo hoặc nộp  
+- `dev` → Nơi nhóm test, ghép code, fix bug  
+- Nhánh cá nhân → Mỗi người làm việc riêng
+
+---
+
 ## 📁 Cấu trúc thư mục
 
 `/main`       → code chính chạy được sau cùng, giữ main sạch
-
-`/dev`        → nơi để nhóm test, ghép code, fix bug trước khi đưa lên main
 
 `/test`       → Code test riêng, thử nghiệm, lỗi
 
