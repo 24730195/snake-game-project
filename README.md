@@ -51,11 +51,11 @@ Nhánh cá nhân → Mỗi người làm việc riêng
 
 ## 📚 Tài liệu quan trọng
 
-- 📌 Quan trọng nhất: [Báo cáo đồ án (quan trọng)](./docs/Báo%20cáo%20đồ%20án%20(quan%20trọng).md)
+- 📌 Quan trọng nhất: [Báo cáo đồ án (quan trọng)](./doc/Báo%20cáo%20đồ%20án%20(quan%20trọng).md)
 - [Quy tắc làm việc nhóm](./doc/Quy%20tắc%20làm%20việc%20nhóm.md)
 - [Hệ thống nhãn (labels)](./doc/Hệ%20thống%20nhãn%20(labels).md)
-- [Phác thảo ý tưởng làm game (tham khảo)](./docs/Phác%20thảo%20ý%20tưởng%20làm%20Snake%20Game%20(tham%20khảo).md)
-- [Hướng dẫn làm Snake Game](./docs/Hướng%20dẫn%20làm%20Snake%20Game.md)
+- [Phác thảo ý tưởng làm game (tham khảo)](./doc/Phác%20thảo%20ý%20tưởng%20làm%20Snake%20Game%20(tham%20khảo).md)
+- [Hướng dẫn làm Snake Game](./doc/Hướng%20dẫn%20làm%20Snake%20Game.md)
 
 ---
 
