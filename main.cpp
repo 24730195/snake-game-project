@@ -14,7 +14,7 @@ public:
         A[1].x = 11; A[1].y = 10;
         A[2].x = 12; A[2].y = 10;
     }
-void Run(int Huong){
+    void Run(int Huong){
         for (int i = DoDai-1; i>0;i--)
             A[i] = A[i-1];
         if (Huong==0) A[0].x = A[0].x + 1;
@@ -44,4 +44,3 @@ int main()
 
     return 0;
 }
-
