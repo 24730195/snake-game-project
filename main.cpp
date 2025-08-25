@@ -7,16 +7,15 @@ void generateFood() {
 //Kiểm tra rắn ăn mồi
 void eatFood(Snake &snake) {
     if (snake.Body[0].x == food.x && snake.Body[0].y == food.y) {
-        snake.Length++;   // snake grows
-        score++;          // increase score
-        generateFood();   // respawn food
+        snake.Length++;     
+        generateFood();
     }
 }
 
 //Hàm vẽ mồi
 void drawFood() {
     gotoxy(food.x, food.y);
-    cout << "o";   // symbol for food
+    cout << "o";
 }
 
 int main() {
