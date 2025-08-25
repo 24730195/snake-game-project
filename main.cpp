@@ -1,10 +1,3 @@
-struct Point {
-    int x, y;
-};
-
-Point food;
-int score = 0;
-
 //Hàm sinh mồi ngẫu nhiên
 void generateFood() {
     food.x = rand() % (WIDTH - 2) + 1;  
@@ -32,6 +25,3 @@ int main() {
 }
 return 0;
 }
-
-
-
