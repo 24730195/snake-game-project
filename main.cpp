@@ -5,17 +5,13 @@
 using namespace std;
 
 
-void Draw (SNAKE snake)
+void Draw()
 {
-    int i;
-    for (i = 0; i < snake.Leng; i++)
+    for (int i = 0; i < DoDai; i++)
     {
-        gotoxy(snake.A[i].x*2, snake.A[i].y);
+        gotoxy(A[i].x,A[i].y);
         printf("%c%c",219,219);
-        Sleep(1000);
     }
-    gotoxy(snake.A[i].x*2, snake.A[i].y);
-    printf(" ");
-    gotoxy(40,20);
-    printf("\n");
 }
+
+
