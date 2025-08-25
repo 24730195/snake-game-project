@@ -11,9 +11,3 @@ void gotoxy(int x, int y) {
     coord.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
-
-int main() {
-    gotoxy(10, 5);
-    printf("Hello");
-    return 0;
-}
