@@ -23,8 +23,5 @@ void DrawFrame() {
 
 int main() {
   DrawFrame();
-        snake.Draw();
-}
-
     return 0;
 }
