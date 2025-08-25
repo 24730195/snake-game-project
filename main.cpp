@@ -4,8 +4,16 @@
 #include <conio.h>
 using namespace std;
 
+struct Point {
+    int x, y;
+};
+
 class Snake {
 public:
+
+    Point Body[100];
+    int Length;
+
     Snake() {
         Length = 3;
         Body[0].x = 10; Body[0].y = 10;
