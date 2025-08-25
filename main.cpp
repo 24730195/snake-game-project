@@ -1,3 +1,9 @@
+#include <iostream>
+#include <windows.h>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+
 //Hàm sinh mồi ngẫu nhiên
 void generateFood() {
     food.x = rand() % (WIDTH - 2) + 1;  
