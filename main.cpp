@@ -6,13 +6,6 @@ using namespace std;
 
 class Snake {
 public:
-    struct Point {
-        int x, y;
-    };
-
-    Point Body[100]; // mảng lưu toạ độ thân rắn
-    int Length;
-
     Snake() {
         Length = 3;
         Body[0].x = 10; Body[0].y = 10;
