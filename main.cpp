@@ -6,6 +6,13 @@ using namespace std;
 
 class Snake {
 public:
+    struct Point {
+        int x, y;
+    };
+
+    Point Body[100]; // mảng lưu toạ độ thân rắn
+    int Length;
+
     Snake() {
         Length = 3;
         Body[0].x = 10; Body[0].y = 10;
@@ -23,23 +30,11 @@ public:
     }
 };
 
-int main() {
-    Snake snake;
-    int Direction = 0;
-    char key;
-
-    while (1) {
-        if (kbhit()) {
-            key = getch();
-            if (key == 'a') Direction = 2;
-            if (key == 'w') Direction = 3;
-            if (key == 'd') Direction = 0;
-            if (key == 'x') Direction = 1;
-        }
-        system("cls");
-        snake.Move(Direction);
-        Sleep(300);
-    }
-
-    return 0;
+// Hàm di chuyển con trỏ in ra màn hình console
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+
