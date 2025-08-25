@@ -8,6 +8,14 @@ struct Point {
     int x, y;
 };
 
+// Hàm di chuyển con trỏ in ra màn hình console
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
 class Snake {
 public:
 
@@ -23,10 +31,10 @@ public:
     
     void Draw()
     {
-        for (int i = 0; i < DoDai; i++)
+        for (int i = 0; i < Length; i++)
         {
-            gotoxy(A[i].x,A[i].y);
-            printf("%c%c",219,219);
+            gotoxy(Body[i].x,Body[i].y);
+            printf("%c",219);
         }
     }
 
@@ -40,13 +48,6 @@ public:
     }
 };
 
-// Hàm di chuyển con trỏ in ra màn hình console
-void gotoxy(int x, int y) {
-    COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
 
 
 
