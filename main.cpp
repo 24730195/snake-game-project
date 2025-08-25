@@ -4,41 +4,46 @@
 #include <conio.h>
 using namespace std;
 
-class CONRAN{
+class Snake {
 public:
-    struct Point A[100];
-    int DoDai;
-    CONRAN(){
-        DoDai = 3;
-        A[0].x = 10; A[0].y = 10;
-        A[1].x = 11; A[1].y = 10;
-        A[2].x = 12; A[2].y = 10;
+    struct Point {
+        int x, y;
+    } Body[100];
+    
+    int Length;
+    
+    Snake() {
+        Length = 3;
+        Body[0].x = 10; Body[0].y = 10;
+        Body[1].x = 11; Body[1].y = 10;
+        Body[2].x = 12; Body[2].y = 10;
     }
-    void Run(int Huong){
-        for (int i = DoDai-1; i>0;i--)
-            A[i] = A[i-1];
-        if (Huong==0) A[0].x = A[0].x + 1;
-        if (Huong==1) A[0].y = A[0].y + 1;
-        if (Huong==2) A[0].x = A[0].x - 1;
-        if (Huong==3) A[0].y = A[0].y - 1;}
+    
+    void Move(int Direction) {
+        for (int i = Length - 1; i > 0; i--)
+            Body[i] = Body[i - 1];
+        if (Direction == 0) Body[0].x = Body[0].x + 1; // right
+        if (Direction == 1) Body[0].y = Body[0].y + 1; // down
+        if (Direction == 2) Body[0].x = Body[0].x - 1; // left
+        if (Direction == 3) Body[0].y = Body[0].y - 1; // up
+    }
 };
 
-int main()
-{
-    CONRAN r;
-    int Huong = 0;
-    char t;
+int main() {
+    Snake snake;
+    int Direction = 0;
+    char key;
 
-    while (1){
-        if (kbhit()){
-            t = getch();
-            if (t=='a') Huong = 2;
-            if (t=='w') Huong = 3;
-            if (t=='d') Huong = 0;
-            if (t=='x') Huong = 1;
+    while (1) {
+        if (kbhit()) {
+            key = getch();
+            if (key == 'a') Direction = 2;
+            if (key == 'w') Direction = 3;
+            if (key == 'd') Direction = 0;
+            if (key == 'x') Direction = 1;
         }
         system("cls");
-        r.DiChuyen(Huong);
+        snake.Move(Direction);
         Sleep(300);
     }
 
