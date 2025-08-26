@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-    CONRAN r;
-    int Huong = 0;
+    Snake snake;
+    int Direction = 0;
     char t;
 
     while (1)
@@ -17,14 +17,14 @@ int main()
         if (kbhit())
         {
             t = getch();
-            if (t=='a') Huong = 2;
-            if (t=='w') Huong = 3;
-            if (t=='d') Huong = 0;
-            if (t=='x') Huong = 1;
+            if (t=='a') Direction = 2;
+            if (t=='w') Direction = 3;
+            if (t=='d') Direction = 0;
+            if (t=='x') Direction = 1;
         }
         system("cls");
-        r.Draw();
-        r.DiChuyen(Huong);
+        snake.Draw();
+        snake.Move(Direction);
         Sleep(1000);
     }
 
