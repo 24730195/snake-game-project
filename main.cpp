@@ -20,8 +20,8 @@ void gotoxy(int x, int y) {
 
 // Hàm sinh mồi ngẫu nhiên
 void generateFood() {
-    food.x = rand() % (WIDTH - 2) + 1;
-    food.y = rand() % (HEIGHT - 2) + 1;
+    food.x = rand() % (MAX_WIDTH - MIN_WIDTH - 1) + MIN_WIDTH + 1;
+    food.y = rand() % (MAX_HEIGHT - MIN_HEIGHT - 1) + MIN_HEIGHT + 1;
 }
 
 // Hàm kiểm tra rắn ăn mồi
