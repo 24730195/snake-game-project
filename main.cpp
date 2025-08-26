@@ -17,6 +17,9 @@ const int MAX_HEIGHT = 25;
 // Khai báo hàm
 void gotoxy(int x, int y);
 void DrawFrame();
+void drawFood();
+void generateFood();
+void eatFood(class Snake &snake);
 Point food;
 
 //Khởi tạo class Snake
@@ -45,8 +48,9 @@ public:
 
     //Hàm di chuyển
     void Move(int Direction) {
-        for (int i = Length - 1; i > 0; i--)
+        for (int i = Length - 1; i > 0; i--){
             Body[i] = Body[i - 1];
+        }
         if (Direction == 0) Body[0].x = Body[0].x + 1; // right
         if (Direction == 1) Body[0].y = Body[0].y + 1; // down
         if (Direction == 2) Body[0].x = Body[0].x - 1; // left
@@ -58,7 +62,31 @@ public:
 int main() {
     // Dựng trò chơi
     // ---Cài đặt---
+    generateFood();
     DrawFrame();
+
+    Snake snake;
+    int Direction = 0;
+    char t;
+
+    while (1)
+    {
+        if (kbhit())
+        {
+            t = getch();
+            if (t=='a') Direction = 2;
+            if (t=='w') Direction = 3;
+            if (t=='d') Direction = 0;
+            if (t=='x') Direction = 1;
+        }
+        system("cls");
+        DrawFrame();
+        drawFood();
+        snake.Move(Direction);
+        snake.Draw();
+        eatFood(snake);
+        Sleep(300);;
+    }
 
     return 0;
 }
