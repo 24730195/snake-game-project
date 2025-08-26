@@ -30,6 +30,11 @@ public:
     int Length;
 
     Snake() {
+        init();
+    }
+
+    //Hàm khởi tạo vị trí đầu tiên của rắn
+    void init() {
         Length = 3;
         Body[0].x = 10; Body[0].y = 10;
         Body[1].x = 11; Body[1].y = 10;
@@ -136,4 +141,3 @@ void drawFood() {
     gotoxy(food.x, food.y);
     cout << "o";
 }
-
