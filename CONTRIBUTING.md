@@ -7,11 +7,11 @@
 - Feature branch: chứa code đang phát triển, merge vào main chính.
 
 ### Quy tắc Feature branch:
-**feature/<short-description>-name**
+`feature/<short-description>-name`
 
 ## 2. Quy tắc đặt tên Commit
 - Sử dụng chuẩn **Conventional Commits**:
-**<type>(<scope>): <short-description>**
+`<type>(<scope>): <short-description>`
 - Trong đó:
   - `type`: loại commit (feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert)
   - `scope`: phạm vi ảnh hưởng (module, tính năng, component…). Có thể bỏ trống.
@@ -56,9 +56,9 @@
 8. Khi tester confirm OK → merge PR vào main.
 9. Khi đủ tính năng → leader build file `.exe`:
 - Với file (`.cpp + .h`):
-<pre> ```bash g++ main.cpp -o snake.exe ``` </pre>
+<pre> bash g++ main.cpp -o snake.exe </pre>
 - Nếu có nhiều file (`game.cpp, snake.cpp, food.cpp…`):
-<pre> ```bash g++ main.cpp snake.cpp food.cpp -o snake.exe ``` </pre>
+<pre> bash g++ main.cpp snake.cpp food.cpp -o snake.exe </pre>
 
 10. Tester chạy thử `.exe` cuối cùng trên nhiều máy.
 11. Test di chuyển, ăn food, tăng điểm, game over.
