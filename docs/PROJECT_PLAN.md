@@ -25,44 +25,54 @@
 ### Phase 1: Setup & Planning
 **Goal:** Chuẩn bị project structure, tạo file, xác định roles  
 **Tasks:**  
-- [ ] Tạo project folder, docs, src, assets  
+- [x] Tạo project folder, docs, src, assets  
 - [ ] Tạo `main.cpp` và header + cpp cho từng module: Snake, Food, Game, Utils  
-- [ ] Hoàn thiện `DESIGN.md`  
+- [x] Hoàn thiện `DESIGN.md`  
 
 ---
 
-### Phase 2: Implement Modules
-**Goal:** Hoàn thành logic core từng module  
+## Phase 2: Implement Modules
+**Goal:** Hoàn thành logic core cho từng module  
 
-**Module Snake:**  
-- [ ] **move()** → Di chuyển rắn theo hướng  
-- [ ] **grow()** → Tăng chiều dài rắn khi ăn thức ăn  
-- [ ] **changeDirection(char newDir)** → Nhận input W/A/S/D  
-- [ ] **eatSelf()** → Kiểm tra rắn tự cắn → game over  
-- [ ] **getBody()** → Trả về vector tọa độ rắn  
-
-**Module Food:**  
-- [ ] **respawn(int width, int height, vector<pair<int,int>> snakeBody)** → Sinh thức ăn không trùng rắn  
-- [ ] **getPosition()** → Trả về tọa độ thức ăn  
-
-**Module Utils:**  
-- [ ] **clearScreen()** → Xóa console trước khi render frame mới  
-- [ ] **sleep(ms)** → Tạm dừng game, tạo tốc độ di chuyển ổn định  
-- [ ] **randomInt(min, max)** → Sinh số ngẫu nhiên  
-- [ ] **beep()** → Phát âm thanh khi rắn ăn thức ăn  
+### 1️⃣ Module Snake  
+- [x] `init()` → Khởi tạo rắn ban đầu (3 đốt)  
+- [x] `draw()` → Vẽ rắn ra màn hình console  
+- [x] `move(int direction)` → Di chuyển rắn theo hướng  
+- [ ] `grow()` → Rắn dài thêm một đốt khi ăn mồi  
+- [ ] `eraseTail()` → Xóa phần đuôi để rắn di chuyển mượt  
+- [ ] `checkCollisionWithWall()` → Kiểm tra rắn có đâm vào tường không  
+- [ ] `checkCollisionWithSelf()` → Kiểm tra rắn có tự cắn thân không  
 
 ---
 
-### Phase 3: Integrate Game
-**Goal:** Kết hợp các module, tạo game loop  
+### 2️⃣ Module Food  
+- [x] `generate()` → Sinh mồi ngẫu nhiên trong khung  
+- [x] `draw()` → Vẽ mồi ra màn hình console  
+- [ ] `isEaten(const Snake &snake)` → Kiểm tra rắn có ăn mồi không  
 
-**Module Game:**  
-- [ ] **run()** → Vòng lặp chính: processInput → update → render  
-- [ ] **processInput()** → Nhận input W/A/S/D  
-- [ ] **update()** → Di chuyển rắn, kiểm tra ăn thức ăn, va chạm, tăng điểm  
-- [ ] **render()** → Vẽ bản đồ, rắn, thức ăn, điểm  
-- [ ] **playSound()** → Phát âm thanh khi rắn ăn thức ăn  
-- [ ] `main.cpp` → Tạo Game object, gọi run()  
+---
+
+### 3️⃣ Module Utils  
+- [x] `gotoxy(int x, int y)` → Di chuyển con trỏ in ra màn hình console  
+- [ ] `hideCursor()` → Ẩn con trỏ nhấp nháy trong console  
+- [ ] `randomInt(int min, int max)` → Sinh số ngẫu nhiên trong khoảng  
+- [ ] *(Optional)* `clearScreen()` → Xóa console trước khi render frame mới  
+- [ ] *(Optional)* `beep()` → Phát âm thanh khi rắn ăn mồi  
+
+---
+
+## Phase 3: Integrate Game
+**Goal:** Kết hợp các module, xây dựng game loop  
+
+### 4️⃣ Module Game  
+- [ ] `Game()` → Khởi tạo game (rắn, mồi, điểm, hướng mặc định)  
+- [ ] `run()` → Vòng lặp chính của game (xử lý input + update + render)  
+- [x] `drawFrame()` → Vẽ khung viền trò chơi  
+- [ ] `displayScore()` → Hiển thị điểm số hiện tại  
+- [ ] `gameOver()` → In thông báo thua, dừng game  
+
+### Main Entry  
+- [ ] `main.cpp` → Tạo `Game g;` và gọi `g.run()` để khởi động game  
 
 ---
 
