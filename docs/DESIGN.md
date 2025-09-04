@@ -20,43 +20,49 @@
 **Chức năng**: Quản lý rắn, di chuyển, tăng chiều dài, kiểm tra va chạm.  
 
 **Hàm chính:**
-- `move()` → Di chuyển rắn theo hướng hiện tại  
-- `grow()` → Tăng chiều dài rắn khi ăn thức ăn  
-- `changeDirection(char newDir)` → Thay đổi hướng rắn dựa trên input `W/A/S/D`  
-- `eatSelf()` → Kiểm tra rắn tự cắn → game over  
-- `getBody()` → Trả về vector các tọa độ hiện tại của rắn  
+- `init()` → Khởi tạo rắn ban đầu (3 đốt).  
+- `draw()` → Vẽ rắn ra màn hình console.  
+- `move(int direction)` → Di chuyển rắn theo hướng.  
+- `grow()` → Rắn dài thêm một đốt khi ăn mồi.  
+- `eraseTail()` → Xóa phần đuôi để rắn di chuyển mượt.  
+- `checkCollisionWithWall()` → Kiểm tra rắn có đâm vào tường không.  
+- `checkCollisionWithSelf()` → Kiểm tra rắn có tự cắn thân không.  
 
 ---
 
 ### 2. Module **Food**
-**Chức năng**: Tạo và quản lý vị trí thức ăn trên bản đồ  
+**Chức năng:** Quản lý vị trí mồi và sinh mồi mới.  
 
-**Hàm chính:**
-- `respawn(int width, int height, vector<pair<int,int>> snakeBody)` → Sinh thức ăn ngẫu nhiên, không trùng rắn  
-- `getPosition()` → Trả về tọa độ hiện tại của thức ăn  
+### Hàm chính:
+- `generate()` → Sinh mồi ngẫu nhiên trong khung.  
+- `draw()` → Vẽ mồi ra màn hình console.  
+- `isEaten(const Snake &snake)` → Kiểm tra rắn có ăn mồi không.  
 
 ---
 
 ### 3. Module **Game**
-**Chức năng**: Điều phối game loop, xử lý input, update trạng thái  
+**Chức năng:** Quản lý vòng lặp chính của trò chơi.  
 
-**Hàm chính:**
-- `run()` → Vòng lặp chính: input → update → render  
-- `processInput()` → Nhận input từ người chơi (`W/A/S/D`)  
-- `update()` → Di chuyển rắn, kiểm tra ăn thức ăn, va chạm, tăng điểm  
-- `render()` → Vẽ bản đồ ra console, hiển thị rắn, thức ăn, điểm  
-- `playSound()` → Phát âm thanh khi rắn ăn thức ăn  
+### Hàm chính:
+- `Game()` → Khởi tạo game (rắn, mồi, điểm, hướng mặc định).  
+- `run()` → Vòng lặp chính của game.  
+- `drawFrame()` → Vẽ khung viền trò chơi.  
+- `displayScore()` → Hiển thị điểm số hiện tại.  
+- `gameOver()` → In thông báo thua, dừng game.  
+
+*(Xử lý input (W/A/S/D) được viết gộp trong `run()`.)*  
 
 ---
 
 ### 4. Module **Utils**
-**Chức năng**: Các hàm tiện ích dùng chung cho game.  
+**Chức năng:** Các hàm tiện ích dùng chung.  
 
-**Hàm chính:**
-- `clearScreen()` → Xóa console để render frame mới  
-- `sleep(ms)` → Tạm dừng game, tạo tốc độ di chuyển rắn  
-- `randomInt(min, max)` → Sinh số ngẫu nhiên trong khoảng  
-- `beep()` → Phát âm thanh đơn giản trên console  
+### Hàm chính:
+- `gotoxy(int x, int y)` → Di chuyển con trỏ in ra màn hình console.  
+- `hideCursor()` → Ẩn con trỏ nhấp nháy trong console.  
+- `randomInt(int min, int max)` → Sinh số ngẫu nhiên trong khoảng.  
+
+*(Có thể mở rộng thêm: `clearScreen()`, `beep()` nếu muốn hiệu ứng âm thanh hoặc xóa màn hình.)*
 
 ---
 
@@ -79,12 +85,14 @@
 ## **4️⃣ Game Flow / Team Guidance**
 
 ### **Game Flow**
-1. `main.cpp` tạo **Game object** → gọi `run()`  
-2. `Game.run()` → vòng lặp: `processInput()` → `update()` → `render()`  
-3. **Game** sử dụng **Snake + Food + Utils**  
-4. **Snake** quản lý thân rắn, di chuyển, ăn thức ăn, check va chạm  
-5. **Food** quản lý vị trí thức ăn  
-6. **Utils** cung cấp helper: `clearScreen`, `sleep`, `randomInt`, `beep`  
+1. `main.cpp` tạo `Game g;` → gọi `g.run()`.  
+2. `Game.run()`:
+   - Bắt phím điều khiển (W/A/S/D).  
+   - Di chuyển rắn → kiểm tra ăn mồi → tăng điểm.  
+   - Kiểm tra va chạm (tường, thân).  
+   - Vẽ lại khung + rắn + mồi + điểm.
+3. Khi rắn ăn mồi → gọi `snake.grow()`, `food.generate()`, `score++`.  
+4. Khi va chạm → gọi `gameOver()` và kết thúc vòng lặp. 
 
 ### **Team Guidance**
 - Ai làm module nào → code module đó riêng (`.h` + `.cpp`)  
