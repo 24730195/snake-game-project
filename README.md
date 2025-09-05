@@ -1,84 +1,88 @@
 # 🐍 Snake Game – Đồ án nhóm
 
+---
 
 ## 🔖 Thông tin dự án
-
-- Môn học: Kỹ năng nghề nghiệp
-
-- Nhóm: 05
-
-- Ngôn ngữ: C++
+- **Môn học**: Kỹ năng nghề nghiệp  
+- **Nhóm**: 05  
+- **Ngôn ngữ**: C++  
+- **Nền tảng**: Console (Windows)  
 
 ---
 
-## 👥 Thành viên
+## 👥 Thành viên & Vai trò
 
-| Tên     | Vai trò chính          | Vai trò phụ          |
-
-- Hậu
-  
-- Quý
-
-- Vy
-
-- Dương
-
-- Tuấn
+| Role              | Thành viên | Nhiệm vụ |
+|-------------------|------------|----------|
+| Project Leader    | Hậu        | Quản lý tiến độ, tổng hợp module, kiểm tra merge |
+| Technical Writer  | Vy         | Soạn thảo tài liệu (`DESIGN.md`, `CONTRIBUTING.md`), viết báo cáo cuối cùng |
+| Module Snake      | Quý        | Viết class Snake và các hàm core |
+| Module Food       | Quý        | Viết class Food và các hàm core |
+| Module Game       | Tuấn       | Viết class Game và các hàm core |
+| Module Utils      | Tuấn       | Viết các hàm tiện ích chung |
+| Tester            | Dương      | Test từng module, kiểm tra game loop, kiểm tra merge |
 
 ---
 
 ## 🌿 Các nhánh (Branch)
 
-`main` → Bản ổn định cuối cùng để demo hoặc nộp  
-
-`dev` → Nơi nhóm test, ghép code, fix bug  
-
-Nhánh cá nhân → Mỗi người làm việc riêng
+- `main` → Bản ổn định cuối cùng để demo hoặc nộp  
+- Nhánh cá nhân → Mỗi thành viên code và test riêng  
 
 ---
 
 ## 📁 Cấu trúc thư mục
-
-`/main`       → code chính chạy được sau cùng, giữ main sạch
-
-`/test`       → Code test riêng, thử nghiệm, lỗi
-
-`/design`     → Ảnh UI, wireframe, export từ Figma
-
-`/doc`        → Slide, báo cáo, ghi chú checklist
-
----
-
-## 📚 Tài liệu quan trọng
-
-- 📌 Quan trọng nhất: [Báo cáo đồ án (quan trọng)](./doc/Báo%20cáo%20đồ%20án%20(quan%20trọng).md)
-- [Quy tắc làm việc nhóm](./doc/Quy%20tắc%20làm%20việc%20nhóm.md)
-- [Hệ thống nhãn (labels)](./doc/Hệ%20thống%20nhãn%20(labels).md)
-- [Phác thảo ý tưởng làm game (tham khảo)](./doc/Phác%20thảo%20ý%20tưởng%20làm%20Snake%20Game%20(tham%20khảo).md)
-- [Hướng dẫn làm Snake Game](./doc/Hướng%20dẫn%20làm%20Snake%20Game.md)
+📂 Project Root
+│── main/ # Code chính chạy được sau cùng (giữ main sạch)
+│── test/ # Code test riêng, thử nghiệm
+│── docs/ # Slide, báo cáo, ghi chú, checklist
+│── assets/ # Tài nguyên, CONTRIBUTING.md → quy tắc nhóm
+│── DESIGN.md # Tài liệu thiết kế
+│── PROJECT_PLAN.md # Kế hoạch & checklist
+│── README.md # Tài liệu giới thiệu project
 
 ---
 
 ## 🧠 Cách làm việc (Workflow)
 
-- Mỗi người làm nhánh riêng
-- Push lên nhánh cá nhân → tạo Pull Request vào `dev`, thêm người Review và người đó check rồi merge khi thấy ổn
-- Chỉ merge `dev` → `main` khi bản ổn định
+1. Repo có branch `main` (code ổn định).  
+2. Mỗi dev nhận task từ Jira → tạo branch từ `main`.  
+3. Dev code + tự test phần mình:  
+   - Snake movement → test di chuyển 4 hướng  
+   - Food → test spawn ngẫu nhiên, không trùng snake  
+   - Score → test cộng điểm khi ăn food  
+   - Collision → test chạm tường/snake → game over  
+   - UI → test hiển thị score, restart, game over  
+4. Commit theo chuẩn **Conventional Commits**.  
+5. Push branch → tạo Pull Request (PR) vào `main`.  
+6. Tester pull branch về → chạy full game → test toàn bộ flow.  
+7. Tester báo bug (nếu có) → dev fix.  
+8. Khi tester confirm **OK** → merge PR vào `main`.  
 
 ---
 
-## ▶️ Cách chạy game
+## ▶️ Hướng dẫn chơi
 
-(đang cập nhập)
+- **Mục tiêu**: Điều khiển rắn ăn thức ăn để dài hơn, tránh va chạm vào tường hoặc chính mình.  
+- **Điều khiển**:  
+  - `W` → Lên  
+  - `S` → Xuống  
+  - `A` → Trái  
+  - `D` → Phải  
+- **Luật chơi**:  
+  - Ăn thức ăn → +1 điểm, rắn dài thêm 1.  
+  - Đâm vào tường hoặc thân rắn → **Game Over**.  
+- **Kết thúc**: Game sẽ dừng và hiển thị thông báo **Game Over**.  
 
 ---
 
-## 🐞 Ghi bug
+## 💻 Cách chạy chương trình
 
-(đang cập nhập)
+### Yêu cầu
+- Compiler: `g++` hoặc IDE (Code::Blocks, Visual Studio, Dev-C++)  
+- Hệ điều hành: Windows (sử dụng `conio.h` và `system("cls")`)  
 
----
-
-## 📫 Liên hệ nhóm
-
-(đang cập nhập)
+### Build & Run
+```bash
+g++ main.cpp -o snake
+snake.exe
