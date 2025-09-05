@@ -32,14 +32,13 @@
 ---
 
 ## 📁 Cấu trúc thư mục
-📂 Project Root
-│── main/ # Code chính chạy được sau cùng (giữ main sạch)
-│── test/ # Code test riêng, thử nghiệm
-│── docs/ # Slide, báo cáo, ghi chú, checklist
-│── assets/ # Tài nguyên, CONTRIBUTING.md → quy tắc nhóm
-│── DESIGN.md # Tài liệu thiết kế
-│── PROJECT_PLAN.md # Kế hoạch & checklist
-│── README.md # Tài liệu giới thiệu project
+- `main/` → Code chính chạy được sau cùng (giữ main sạch)
+- `test/` → Code test riêng, thử nghiệm
+- `docs/` → Slide, báo cáo, ghi chú, checklist
+- `assets/` → Tài nguyên, CONTRIBUTING.md → quy tắc nhóm
+- `DESIGN.md` → Tài liệu thiết kế
+- `PROJECT_PLAN.md` → Kế hoạch & checklist
+- `README.md` → Tài liệu giới thiệu project
 
 ---
 
