@@ -125,10 +125,6 @@ int main() {
     // Hình nền
     // Cài đặt trò chơi
     // Chơi game
-
-    // Kết thúc trò chơi và hiển thị điểm
-    DrawFrame();
-
     Snake snake;
     Food food;
     int gameOver = 0;
@@ -147,6 +143,7 @@ int main() {
         Sleep(200);
         gotoxy(0, 0);
     }
+    // Kết thúc trò chơi và hiển thị điểm
     _getch();
     gotoxy(0, 0);
     showCur(1);
