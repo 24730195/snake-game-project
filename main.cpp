@@ -20,6 +20,8 @@ void DrawFrame();
 void drawFood();
 void generateFood();
 void eatFood(class Snake &snake);
+bool checkWallCollision(class Snake &snake);
+void gameOver();
 Point food;
 
 //Khởi tạo class Snake
@@ -36,9 +38,9 @@ public:
     //Hàm khởi tạo vị trí đầu tiên của rắn
     void init() {
         Length = 3;
-        Body[0].x = 10; Body[0].y = 10;
-        Body[1].x = 11; Body[1].y = 10;
-        Body[2].x = 12; Body[2].y = 10;
+        Body[0].x = 15; Body[0].y = 10;  // Đầu rắn
+        Body[1].x = 14; Body[1].y = 10;  // Thân
+        Body[2].x = 13; Body[2].y = 10;  // Đuôi
     }
 
     //Hàm vẽ rắn
@@ -47,7 +49,11 @@ public:
         for (int i = 0; i < Length; i++)
         {
             gotoxy(Body[i].x,Body[i].y);
-            printf("%c",219);
+            if (i == 0)
+                printf("%c", 254); // Đầu rắn
+            else
+                printf("%c", 219); // Thân rắn
+
         }
     }
 
@@ -56,22 +62,25 @@ public:
         for (int i = Length - 1; i > 0; i--){
             Body[i] = Body[i - 1];
         }
-        if (Direction == 0) Body[0].x = Body[0].x + 1; // right
-        if (Direction == 1) Body[0].y = Body[0].y + 1; // down
-        if (Direction == 2) Body[0].x = Body[0].x - 1; // left
-        if (Direction == 3) Body[0].y = Body[0].y - 1; // up
+        if (Direction == 6) Body[0].x = Body[0].x + 1; // right
+        if (Direction == 2) Body[0].y = Body[0].y + 1; // down
+        if (Direction == 4) Body[0].x = Body[0].x - 1; // left
+        if (Direction == 8) Body[0].y = Body[0].y - 1; // up
     }
 };
 
 
 int main() {
+    // Khởi tạo random seed
+    srand(time(NULL));
+
     // Dựng trò chơi
     // ---Cài đặt---
     generateFood();
     DrawFrame();
 
     Snake snake;
-    int Direction = 0;
+    int Direction = 6;
     char t;
 
     while (1)
@@ -79,10 +88,10 @@ int main() {
         if (kbhit())
         {
             t = getch();
-            if (t=='a') Direction = 2;
-            if (t=='w') Direction = 3;
-            if (t=='d') Direction = 0;
-            if (t=='x') Direction = 1;
+            if (t == 'a' || t == 'A') Direction = 4;
+            if (t == 'w' || t == 'W') Direction = 8;
+            if (t == 'd' || t == 'D') Direction = 6;
+            if (t == 's' || t == 'S') Direction = 2;
         }
         system("cls");
         DrawFrame();
@@ -90,6 +99,13 @@ int main() {
         snake.Move(Direction);
         snake.Draw();
         eatFood(snake);
+
+        // Kiểm tra đụng tường
+        if (checkWallCollision(snake)) {
+            gameOver();
+            break;
+        }
+
         Sleep(300);;
     }
 
@@ -112,9 +128,9 @@ void DrawFrame() {
         gotoxy(x, MIN_HEIGHT);
         cout << "#";   // cạnh trên
         gotoxy(x, MAX_HEIGHT);
-        cout << "#";   // cạnh dưới 
+        cout << "#";   // cạnh dưới
     }
-    
+
     for (int y = MIN_HEIGHT; y <= MAX_HEIGHT; y++) {
         gotoxy(MIN_WIDTH, y);
         cout << "#";   // cạnh trái
@@ -140,4 +156,24 @@ void eatFood(Snake &snake) {
 void drawFood() {
     gotoxy(food.x, food.y);
     cout << "o";
+}
+
+// Hàm kiểm tra đụng tường
+bool checkWallCollision(Snake &snake) {
+    // Kiểm tra đầu rắn có chạm vào tường không
+    if (snake.Body[0].x <= MIN_WIDTH || snake.Body[0].x >= MAX_WIDTH ||
+        snake.Body[0].y <= MIN_HEIGHT || snake.Body[0].y >= MAX_HEIGHT) {
+        return true; // Đụng tường
+    }
+    return false; // Không đụng tường
+}
+
+// Hàm hiển thị kết thúc game
+void gameOver() {
+    system("cls");
+    gotoxy(40, 12);
+    cout << "GAME OVER!";
+    gotoxy(35, 14);
+    cout << "Nhan phim bat ky de thoat...";
+    getch();
 }
