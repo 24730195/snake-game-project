@@ -20,6 +20,7 @@ void DrawFrame();
 void drawFood();
 void generateFood();
 void eatFood(class Snake &snake);
+bool checkWallCollision(class Snake &snake);
 Point food;
 
 //Khởi tạo class Snake
@@ -140,4 +141,14 @@ void eatFood(Snake &snake) {
 void drawFood() {
     gotoxy(food.x, food.y);
     cout << "o";
+}
+
+// Hàm kiểm tra đụng tường
+bool checkWallCollision(Snake &snake) {
+    // Kiểm tra đầu rắn có chạm vào tường không
+    if (snake.Body[0].x <= MIN_WIDTH || snake.Body[0].x >= MAX_WIDTH ||
+        snake.Body[0].y <= MIN_HEIGHT || snake.Body[0].y >= MAX_HEIGHT) {
+        return true; // Đụng tường
+    }
+    return false; // Không đụng tường
 }
