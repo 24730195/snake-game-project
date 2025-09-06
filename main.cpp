@@ -21,6 +21,7 @@ void drawFood();
 void generateFood();
 void eatFood(class Snake &snake);
 bool checkWallCollision(class Snake &snake);
+void gameOver();
 Point food;
 
 //Khởi tạo class Snake
@@ -91,6 +92,13 @@ int main() {
         snake.Move(Direction);
         snake.Draw();
         eatFood(snake);
+
+        // Kiểm tra đụng tường
+        if (checkWallCollision(snake)) {
+            gameOver();
+            break;
+        }
+
         Sleep(300);;
     }
 
@@ -151,4 +159,14 @@ bool checkWallCollision(Snake &snake) {
         return true; // Đụng tường
     }
     return false; // Không đụng tường
+}
+
+// Hàm hiển thị kết thúc game
+void gameOver() {
+    system("cls");
+    gotoxy(40, 12);
+    cout << "GAME OVER!";
+    gotoxy(35, 14);
+    cout << "Nhan phim bat ky de thoat...";
+    getch(); // Chờ người chơi nhấn phím
 }
