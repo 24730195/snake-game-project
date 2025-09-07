@@ -80,7 +80,15 @@ public:
 
     //Hàm di chuyển
     void Move() {
+        // Xoá phần đuôi rắn thừa
+        gotoxy(Body[Length].x, Body[Length].y);
+        textColor(0);
+        printf(" ");
+
+        // Dịch chuyển thân rắn
         for (int i = Length; i > 0; i--) Body[i] = Body[i - 1];
+
+        // Điều khiển hướng di chuyển
         if (kbhit()) {
             char key = getch();
             switch (key)
@@ -97,6 +105,8 @@ public:
                     break;
             }
         }
+
+        // Cập nhật vị trí đầu rắn theo hướng di chuyển
         switch (dir) {
             case LEFT: Body[0].x--; break;
             case RIGHT: Body[0].x++; break;
@@ -116,6 +126,8 @@ public:
 
 bool checkCollision(const Snake &snake);
 void backSpace(const Snake &snake);
+void clearScreen();
+void avatar();
 
 int main() {
     // Khởi tạo trò chơi
@@ -123,6 +135,7 @@ int main() {
     system("cls");
     DrawFrame();
     // Hình nền
+    avatar();
     // Cài đặt trò chơi
     // Chơi game
     Snake snake;
@@ -132,13 +145,12 @@ int main() {
     while (!gameOver) {
         snake.Draw();
         food.drawFood();
-        backSpace(snake);
         snake.Move();
         snake.eatFood(food);
         // Kiểm tra va chạm
         if (checkCollision(snake)) {
             gameOver = 1;
-            gotoxy(35, 15); textColor(12); printf("GAME OVER!");
+            gotoxy(40, 17); textColor(12); printf("GAME OVER!");
         }
         Sleep(200);
         gotoxy(0, 0);
@@ -200,8 +212,45 @@ bool checkCollision(const Snake &snake) {
     return false;
 }
 
-void backSpace(const Snake &snake) {
-    gotoxy(snake.Body[snake.Length].x, snake.Body[snake.Length].y);
-    textColor(0);
-    printf(" ");
+void clearScreen()
+{
+    for (int i = MIN_HEIGHT + 1; i < MAX_HEIGHT; i++)
+        for (int j = MIN_WIDTH + 1; j < MAX_WIDTH - 1; j++) {
+            gotoxy(j, i);
+            textColor(0);
+            printf(" ");
+        }
 }
+
+
+void avatar()
+{
+    gotoxy(15, 11); textColor(10); printf("                _        ");
+    gotoxy(15, 12); textColor(10); printf("                | |       ");
+    gotoxy(15, 13); textColor(10); printf(" ___ _ __   __ _| | _____ ");
+    gotoxy(15, 14); textColor(10); printf("/ __| '_ \\ / _` | |/ / _ \\");
+    gotoxy(15, 15); textColor(10); printf("\\__ \\ | | | (_| |   <  __/");
+    gotoxy(15, 16); textColor(10); printf("|___/_| |_|\\__,_|_|\\_\\___|");
+    gotoxy(45, 8); textColor(10); printf(" ---_ ......._-_--.       ");
+    gotoxy(45, 9); textColor(10); printf(" (|\\ /      / /| \\  \\     ");
+    gotoxy(45, 10); textColor(10); printf(" /  /     .'  -=-'   `.   ");
+    gotoxy(45, 11); textColor(10); printf(" /  /    .'             )  ");
+    gotoxy(45, 12); textColor(10); printf(" _/  /   .'        _.)   / ");
+    gotoxy(45, 13); textColor(10); printf(" / o   o        _.-' /  .' ");
+    gotoxy(45, 14); textColor(10); printf(" \\          _.-'    / .'*|  ");
+    gotoxy(45, 15); textColor(10); printf("  \\______.-'//    .'.' \\*|  ");
+    gotoxy(45, 16); textColor(10); printf("   \\|  \\ | //   .'.' _ |*|  ");
+    gotoxy(45, 17); textColor(10); printf("    `   \\|//  .'.'_ _ _|*|  ");
+    gotoxy(45, 18); textColor(10); printf("     .  .// .'.' | _ _ \\*|  ");
+    gotoxy(45, 19); textColor(10); printf("     \\`-|\\_/ /    \\ _ _ \\*\\ ");
+    gotoxy(45, 20); textColor(10); printf("      `/'\\__/      \\ _ _ \\*\\ ");
+    gotoxy(45, 21); textColor(10); printf("     /^|            \\ _ _ \\* ");
+    gotoxy(45, 22); textColor(10); printf("    '  `             \\ _ _ \\ ");
+    gotoxy(45, 23); textColor(10); printf("                      \\_      ");
+    gotoxy(25, 25); textColor(15); printf("Press any key to go to the menu...");
+    _getch();
+    clearScreen();
+    // Thời gian chuyển khung hình
+    Sleep(500);
+}
+
