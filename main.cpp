@@ -130,6 +130,8 @@ void clearScreen();
 void avatar();
 void playGame();
 void menu();
+void about();
+void help();
 
 int main() {
     // Khởi tạo trò chơi
@@ -138,6 +140,10 @@ int main() {
     DrawFrame();
     // Hình nền
     avatar();
+    // Thông tin
+    about();
+    // Hướng dẫn
+    help();
     // Cài đặt trò chơi
     menu();
     system("cls");
@@ -160,7 +166,7 @@ void textColor(int color) {
 
 // Làm ẩn con trỏ
 void showCur(bool CursorVisibility)
-{ 
+{
     HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursor = { 10, CursorVisibility };
     SetConsoleCursorInfo(handle, &cursor);
@@ -408,5 +414,54 @@ void menu()
     _getch();
     clearScreen();
     gotoxy(0, 0);
+    Sleep(500);
+}
+
+void about() {
+    textColor(10);
+    gotoxy(24, 8);  printf("============================================");
+    gotoxy(24, 9);  printf("               ABOUT THIS GAME              ");
+    gotoxy(24, 10); printf("============================================");
+    textColor(15);
+    gotoxy(26, 12); printf("Mon hoc    : Ky Nang Nghe Nghiep");
+    gotoxy(26, 13); printf("GV huong dan: Thay Nguyen Van Toan");
+    gotoxy(26, 14); printf("De tai     : SNAKE GAME (C++)");
+    gotoxy(26, 16); printf("Nhom thuc hien: Nhom 05");
+    gotoxy(26, 17); printf("Thanh vien : Phan Thanh Hau");
+    gotoxy(26, 18); printf("             Truong Hoang Thanh Vy");
+    gotoxy(26, 19); printf("             Le Trong Quy");
+    gotoxy(26, 20); printf("             Ho Duy Tuan");
+    gotoxy(26, 21); printf("             Nguyen Thi Thuy Duong");
+    textColor(14);
+    gotoxy(26, 23); printf("Cam on thay da huong dan nhom thuc hien.");
+    textColor(10);
+    gotoxy(26, 25); printf("Nhan phim bat ky de tiep tuc...");
+    _getch();
+    clearScreen();
+    // Thời gian chuyển khung hình
+    Sleep(500);
+}
+
+void help() {
+    textColor(10);
+    gotoxy(24, 8);  printf("============================================");
+    gotoxy(24, 9);  printf("              GAME INSTRUCTIONS             ");
+    gotoxy(24, 10); printf("============================================");
+    textColor(15);
+    gotoxy(26, 12); printf("Cac phim dieu khien:");
+    gotoxy(26, 13); printf("   - W / 8 : Di len");
+    gotoxy(26, 14); printf("   - S / 2 : Di xuong");
+    gotoxy(26, 15); printf("   - A / 4 : Sang trai");
+    gotoxy(26, 16); printf("   - D / 6 : Sang phai");
+    
+    gotoxy(26, 18); printf("Luat choi:");
+    gotoxy(26, 19); printf("    - An moi de tang do dai ran");
+    gotoxy(26, 20); printf("    - Tranh va vao tuong hoac than ran");
+    gotoxy(26, 21); printf("    - Muc tieu: Dat diem cao nhat!");
+    
+    textColor(10);
+    gotoxy(26, 25); printf("Nhan phim bat ky de bat dau...");
+    _getch();
+    clearScreen();
     Sleep(500);
 }
