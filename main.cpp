@@ -128,6 +128,7 @@ bool checkCollision(const Snake &snake);
 void backSpace(const Snake &snake);
 void clearScreen();
 void avatar();
+void about();
 
 int main() {
     // Khởi tạo trò chơi
@@ -136,6 +137,8 @@ int main() {
     DrawFrame();
     // Hình nền
     avatar();
+    // Thông tin
+    about();
     // Cài đặt trò chơi
     // Chơi game
     Snake snake;
@@ -178,7 +181,7 @@ void textColor(int color) {
 
 // Làm ẩn con trỏ
 void showCur(bool CursorVisibility)
-{ 
+{
     HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursor = { 10, CursorVisibility };
     SetConsoleCursorInfo(handle, &cursor);
@@ -254,3 +257,27 @@ void avatar()
     Sleep(500);
 }
 
+void about() {
+    textColor(10);
+    gotoxy(24, 8);  printf("============================================");
+    gotoxy(24, 9);  printf("               ABOUT THIS GAME              ");
+    gotoxy(24, 10); printf("============================================");
+    textColor(15);
+    gotoxy(26, 12); printf("Mon hoc    : Ky Nang Nghe Nghiep");
+    gotoxy(26, 13); printf("GV huong dan: Thay Nguyen Van Toan");
+    gotoxy(26, 14); printf("De tai     : SNAKE GAME (C++)");
+    gotoxy(26, 16); printf("Nhom thuc hien: Nhom 05");
+    gotoxy(26, 17); printf("Thanh vien : Phan Thanh Hau");
+    gotoxy(26, 18); printf("             Truong Hoang Thanh Vy");
+    gotoxy(26, 19); printf("             Le Trong Quy");
+    gotoxy(26, 20); printf("             Ho Duy Tuan");
+    gotoxy(26, 21); printf("             Nguyen Thi Thuy Duong");
+    textColor(14);
+    gotoxy(26, 23); printf("Cam on thay da huong dan nhom thuc hien.");
+    textColor(10);
+    gotoxy(26, 25); printf("Nhan phim bat ky de tiep tuc...");
+    _getch();
+    clearScreen();
+    // Thời gian chuyển khung hình
+    Sleep(500);
+}
