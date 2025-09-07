@@ -292,10 +292,10 @@ void help() {
     gotoxy(24, 10); printf("============================================");
     textColor(15);
     gotoxy(26, 12); printf("Cac phim dieu khien:");
-    gotoxy(26, 13); printf("   - W / 8 : Di len");
-    gotoxy(26, 14); printf("   - S / 2 : Di xuong");
-    gotoxy(26, 15); printf("   - A / 4 : Sang trai");
-    gotoxy(26, 16); printf("   - D / 6 : Sang phai");
+    gotoxy(26, 13); printf("   - W : Di len");
+    gotoxy(26, 14); printf("   - S : Di xuong");
+    gotoxy(26, 15); printf("   - A : Sang trai");
+    gotoxy(26, 16); printf("   - D : Sang phai");
     
     gotoxy(26, 18); printf("Luat choi:");
     gotoxy(26, 19); printf("    - An moi de tang do dai ran");
