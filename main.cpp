@@ -44,8 +44,8 @@ public:
     //Hàm vẽ mồi
     void drawFood() {
         gotoxy(currentFood.x, currentFood.y);
-        textColor(124);
-        printf("%c", 15);
+        textColor(13);
+        printf("*");
     }
 };
 
@@ -71,10 +71,11 @@ public:
     //Hàm vẽ rắn
     void Draw()
     {
-        textColor(113);
-        gotoxy(Body[0].x, Body[0].y); printf("%c", 2);
+        textColor(12);
+        gotoxy(Body[0].x, Body[0].y); printf("0");
+        textColor(15);
         for (int i = 1; i < Length; i++) {
-            gotoxy(Body[i].x, Body[i].y); printf("%c", 1);
+            gotoxy(Body[i].x, Body[i].y); printf("o");
         }
     }
 
@@ -125,9 +126,10 @@ public:
 };
 
 bool checkCollision(const Snake &snake);
-void backSpace(const Snake &snake);
 void clearScreen();
 void avatar();
+void playGame();
+void menu();
 void about();
 void help();
 
@@ -138,33 +140,9 @@ int main() {
     DrawFrame();
     // Hình nền
     avatar();
-    // Thông tin
-    about();
-    // Hướng dẫn
-    help();
     // Cài đặt trò chơi
-    // Chơi game
-    Snake snake;
-    Food food;
-    int gameOver = 0;
-
-    while (!gameOver) {
-        snake.Draw();
-        food.drawFood();
-        snake.Move();
-        snake.eatFood(food);
-        // Kiểm tra va chạm
-        if (checkCollision(snake)) {
-            gameOver = 1;
-            gotoxy(40, 17); textColor(12); printf("GAME OVER!");
-        }
-        Sleep(200);
-        gotoxy(0, 0);
-    }
-    // Kết thúc trò chơi và hiển thị điểm
-    _getch();
-    gotoxy(0, 0);
-    showCur(1);
+    menu();
+    system("cls");
     return 0;
 }
 
@@ -260,7 +238,158 @@ void avatar()
     Sleep(500);
 }
 
+void playGame()
+{
+    clearScreen();
+    Snake snake;
+    Food food;
+    int gameOver = 0;
+
+    while (!gameOver) {
+        snake.Draw();
+        food.drawFood();
+        snake.Move();
+        snake.eatFood(food);
+        // Kiểm tra va chạm
+        if (checkCollision(snake)) {
+            gameOver = 1;
+            gotoxy(40, 17); textColor(12); printf("GAME OVER!");
+        }
+        Sleep(200);
+    }
+    _getch();
+    Sleep(2000);
+}
+
+void menu()
+{
+    gotoxy(13, 7); textColor(10); printf("Use the w and s keys to move up and down, and Enter to select...");
+    int choose = 0;
+	int coodinate = 15;
+    textColor(202);
+    gotoxy(37, 15); printf("%c  PLAY GAME  ", 175);
+    textColor(14);
+    gotoxy(37, 16); printf("  HELP         ");
+    gotoxy(37, 17); printf("  ABOUT        ");
+    gotoxy(37, 18); printf("  EXIT         ");
+    textColor(0);
+	do{
+		char key = getch();
+        switch (key)
+        {
+            case 's':
+                choose = 1; break;
+            case 'w':
+                choose = 2; break;    
+            case 13:
+                choose = 3; break;
+            default:
+                choose = 0; break;
+        }
+
+		if(choose == 1 && coodinate < 18) coodinate++;
+		if(choose == 2 && coodinate > 15) coodinate--;
+
+		if(coodinate == 15)
+		{
+            switch (choose)
+            {
+                case 1:
+                    break;
+                case 2:
+                    textColor(14);
+                    gotoxy(37, 16); printf("  HELP         ");
+                    textColor(202);
+                    gotoxy(37, 15); printf("%c  PLAY GAME  ", 175);
+                    break;    
+                case 3:
+                    playGame();
+                    break;
+                case 0:
+                    break;
+            }
+		}
+
+		if(coodinate == 16)
+		{
+            switch (choose)
+            {
+                case 1:
+                    textColor(14);
+                    gotoxy(37, 15); printf("  PLAY GAME    ");
+                    textColor(202);
+                    gotoxy(37, 16); printf("%c  HELP       ", 175);
+                    break;
+                case 2:
+                    textColor(14);
+                    gotoxy(37, 17); printf("  ABOUT        ");
+                    textColor(202);
+                    gotoxy(37, 16); printf("%c  HELP       ", 175);
+                    break;    
+                case 3:
+                    help();
+                    break;
+                case 0:
+                    break;
+            }
+		}
+
+		if(coodinate == 17)
+		{
+            switch (choose)
+            {
+                case 1:
+                    textColor(14);
+                    gotoxy(37, 16); printf("  HELP         ");
+                    textColor(202);
+                    gotoxy(37, 17); printf("%c  ABOUT      ", 175);
+                    break;
+                case 2:
+                    textColor(14);
+                    gotoxy(37, 18); printf("  EXIT        ");
+                    textColor(202);
+                    gotoxy(37, 17); printf("%c  ABOUT      ", 175);
+                    break;    
+                case 3:
+                    about();
+                    break;
+                case 0:
+                    break;
+            }
+		}
+
+		if(coodinate == 18)
+		{
+            switch (choose)
+            {
+                case 1:
+                    textColor(14);
+                    gotoxy(37, 17); printf("  ABOUT        ");
+                    textColor(202);
+                    gotoxy(37, 18); printf("%c  EXIT      ", 175);
+                    break;
+                case 2:
+                    break;    
+                case 3:
+                    clearScreen();
+                    textColor(14);
+                    gotoxy(27,13); printf("Thank you for playing our game!!!");
+                    gotoxy(32,14); printf("Wish you a nice day!!!");
+                    textColor(15); 
+                    gotoxy(39,18); printf("SS004.E31");
+                    textColor(15); 
+                    gotoxy(40,19); printf("Team 5");
+                    Sleep(2000);
+                    break;
+                case 0:
+                    break;
+            }
+		}
+	}while(choose != 3);
+}
+
 void about() {
+    clearScreen();
     textColor(10);
     gotoxy(24, 8);  printf("============================================");
     gotoxy(24, 9);  printf("               ABOUT THIS GAME              ");
@@ -278,14 +407,16 @@ void about() {
     textColor(14);
     gotoxy(26, 23); printf("Cam on thay da huong dan nhom thuc hien.");
     textColor(10);
-    gotoxy(26, 25); printf("Nhan phim bat ky de tiep tuc...");
+    gotoxy(26, 25); printf("Nhan phim bat ky de tro ve bang chon...");
     _getch();
     clearScreen();
     // Thời gian chuyển khung hình
     Sleep(500);
+    menu();
 }
 
 void help() {
+    clearScreen();
     textColor(10);
     gotoxy(24, 8);  printf("============================================");
     gotoxy(24, 9);  printf("              GAME INSTRUCTIONS             ");
@@ -303,8 +434,10 @@ void help() {
     gotoxy(26, 21); printf("    - Muc tieu: Dat diem cao nhat!");
     
     textColor(10);
-    gotoxy(26, 25); printf("Nhan phim bat ky de bat dau...");
+    gotoxy(26, 25); printf("Nhan phim bat ky de tro ve bang chon...");
     _getch();
     clearScreen();
+    // Thời gian chuyển khung hình
     Sleep(500);
+    menu();
 }
