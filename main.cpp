@@ -364,9 +364,9 @@ void menu()
             {
                 case 1:
                     textColor(14);
-                    gotoxy(37, 18); printf("  HIGHT SCORE   ");
+                    gotoxy(37, 17); printf("  ABOUT        ");
                     textColor(202);
-                    gotoxy(37, 19); printf("%c  EXIT      ", 175);
+                    gotoxy(37, 18); printf("%c  EXIT      ", 175);
                     break;
                 case 2:
                     break;    
