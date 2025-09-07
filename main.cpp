@@ -37,8 +37,8 @@ public:
 
     //Hàm sinh mồi ngẫu nhiên
     void generateFood() {
-        currentFood.x = rand() % (MAX_WIDTH - MIN_WIDTH - 1) + MIN_WIDTH + 1;
-        currentFood.y = rand() % (MAX_HEIGHT - MIN_HEIGHT - 1) + MIN_HEIGHT + 1;
+        currentFood.x = rand() % (MAX_WIDTH - MIN_WIDTH - 2) + MIN_WIDTH + 1;
+        currentFood.y = rand() % (MAX_HEIGHT - MIN_HEIGHT - 2) + MIN_HEIGHT + 1;
     }
 
     //Hàm vẽ mồi
@@ -128,10 +128,12 @@ public:
 bool checkCollision(const Snake &snake);
 void clearScreen();
 void avatar();
+void tryAgain();
 void playGame();
 void menu();
 void about();
 void help();
+void exitGame();
 
 int main() {
     // Khởi tạo trò chơi
@@ -142,8 +144,6 @@ int main() {
     avatar();
     // Cài đặt trò chơi
     menu();
-    system("cls");
-    return 0;
 }
 
 
@@ -238,6 +238,76 @@ void avatar()
     Sleep(500);
 }
 
+void tryAgain()
+{
+    clearScreen();
+    gotoxy(13, 7); textColor(10); printf("Use the w and s keys to move up and down, and Enter to select...");
+    int choose = 0;
+	int coodinate = 15;
+    textColor(202);
+    gotoxy(37, 15); printf("%c  TRY AGAIN    ", 175);
+    textColor(14);
+    gotoxy(37, 16); printf("  BACK TO MENU  ");
+    do{
+		char key = getch();
+        switch (key)
+        {
+            case 's':
+                choose = 1; break;
+            case 'w':
+                choose = 2; break;    
+            case 13:
+                choose = 3; break;
+            default:
+                choose = 0; break;
+        }
+
+		if(choose == 1 && coodinate < 16) coodinate++;
+		if(choose == 2 && coodinate > 15) coodinate--;
+
+		if(coodinate == 15)
+		{
+            switch (choose)
+            {
+                case 1:
+                    break;
+                case 2:
+                    textColor(14);
+                    gotoxy(37, 16); printf("  BACK TO MENU  ");
+                    textColor(202);
+                    gotoxy(37, 15); printf("%c  TRY AGAIN    ", 175);
+                    break;    
+                case 3:
+                    playGame();
+                    break;
+                case 0:
+                    break;
+            }
+		}
+
+		if(coodinate == 16)
+		{
+            switch (choose)
+            {
+                case 1:
+                    textColor(14);
+                    gotoxy(37, 15); printf("  TRY AGAIN     ");
+                    textColor(202);
+                    gotoxy(37, 16); printf("%c  BACK TO MENU ", 175);
+                    break;
+                case 2:
+                    break;    
+                case 3:
+                    clearScreen();
+                    menu();
+                    break;
+                case 0:
+                    break;
+            }
+		}
+	}while(choose != 3);
+}
+
 void playGame()
 {
     clearScreen();
@@ -253,12 +323,30 @@ void playGame()
         // Kiểm tra va chạm
         if (checkCollision(snake)) {
             gameOver = 1;
-            gotoxy(40, 17); textColor(12); printf("GAME OVER!");
+            clearScreen();
+            gotoxy(40, 17); textColor(12); printf("SCORE: %d", snake.Length - 3);
         }
         Sleep(200);
     }
+
     _getch();
+    tryAgain();
+}
+
+void exitGame()
+{
+    clearScreen();
+    textColor(14);
+    gotoxy(27,13); printf("Thank you for playing our game!!!");
+    gotoxy(32,14); printf("Wish you a nice day!!!");
+    textColor(15); 
+    gotoxy(39,18); printf("SS004.E31");
+    textColor(15); 
+    gotoxy(40,19); printf("Team 5");
     Sleep(2000);
+    _getch();
+    system("cls");
+    Sleep(500);
 }
 
 void menu()
@@ -366,20 +454,12 @@ void menu()
                     textColor(14);
                     gotoxy(37, 17); printf("  ABOUT        ");
                     textColor(202);
-                    gotoxy(37, 18); printf("%c  EXIT      ", 175);
+                    gotoxy(37, 18); printf("%c  EXIT       ", 175);
                     break;
                 case 2:
                     break;    
                 case 3:
-                    clearScreen();
-                    textColor(14);
-                    gotoxy(27,13); printf("Thank you for playing our game!!!");
-                    gotoxy(32,14); printf("Wish you a nice day!!!");
-                    textColor(15); 
-                    gotoxy(39,18); printf("SS004.E31");
-                    textColor(15); 
-                    gotoxy(40,19); printf("Team 5");
-                    Sleep(2000);
+                    exitGame();
                     break;
                 case 0:
                     break;
