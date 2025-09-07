@@ -129,6 +129,7 @@ void backSpace(const Snake &snake);
 void clearScreen();
 void avatar();
 void about();
+void help();
 
 int main() {
     // Khởi tạo trò chơi
@@ -139,6 +140,8 @@ int main() {
     avatar();
     // Thông tin
     about();
+    // Hướng dẫn
+    help();
     // Cài đặt trò chơi
     // Chơi game
     Snake snake;
@@ -279,5 +282,29 @@ void about() {
     _getch();
     clearScreen();
     // Thời gian chuyển khung hình
+    Sleep(500);
+}
+
+void help() {
+    textColor(10);
+    gotoxy(24, 8);  printf("============================================");
+    gotoxy(24, 9);  printf("              GAME INSTRUCTIONS             ");
+    gotoxy(24, 10); printf("============================================");
+    textColor(15);
+    gotoxy(26, 12); printf("Cac phim dieu khien:");
+    gotoxy(26, 13); printf("   - W / 8 : Di len");
+    gotoxy(26, 14); printf("   - S / 2 : Di xuong");
+    gotoxy(26, 15); printf("   - A / 4 : Sang trai");
+    gotoxy(26, 16); printf("   - D / 6 : Sang phai");
+    
+    gotoxy(26, 18); printf("Luat choi:");
+    gotoxy(26, 19); printf("    - An moi de tang do dai ran");
+    gotoxy(26, 20); printf("    - Tranh va vao tuong hoac than ran");
+    gotoxy(26, 21); printf("    - Muc tieu: Dat diem cao nhat!");
+    
+    textColor(10);
+    gotoxy(26, 25); printf("Nhan phim bat ky de bat dau...");
+    _getch();
+    clearScreen();
     Sleep(500);
 }
