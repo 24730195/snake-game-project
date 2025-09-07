@@ -140,10 +140,6 @@ int main() {
     DrawFrame();
     // Hình nền
     avatar();
-    // Thông tin
-    about();
-    // Hướng dẫn
-    help();
     // Cài đặt trò chơi
     menu();
     system("cls");
@@ -261,6 +257,8 @@ void playGame()
         }
         Sleep(200);
     }
+    _getch();
+    Sleep(2000);
 }
 
 void menu()
@@ -273,8 +271,7 @@ void menu()
     textColor(14);
     gotoxy(37, 16); printf("  HELP         ");
     gotoxy(37, 17); printf("  ABOUT        ");
-    gotoxy(37, 18); printf("  HIGHT SCORE   ");
-    gotoxy(37, 19); printf("  EXIT         ");
+    gotoxy(37, 18); printf("  EXIT         ");
     textColor(0);
 	do{
 		char key = getch();
@@ -290,7 +287,7 @@ void menu()
                 choose = 0; break;
         }
 
-		if(choose == 1 && coodinate < 19) coodinate++;
+		if(choose == 1 && coodinate < 18) coodinate++;
 		if(choose == 2 && coodinate > 15) coodinate--;
 
 		if(coodinate == 15)
@@ -330,6 +327,7 @@ void menu()
                     gotoxy(37, 16); printf("%c  HELP       ", 175);
                     break;    
                 case 3:
+                    help();
                     break;
                 case 0:
                     break;
@@ -348,11 +346,12 @@ void menu()
                     break;
                 case 2:
                     textColor(14);
-                    gotoxy(37, 18); printf("  HIGHT SCORE     ");
+                    gotoxy(37, 18); printf("  EXIT        ");
                     textColor(202);
                     gotoxy(37, 17); printf("%c  ABOUT      ", 175);
                     break;    
                 case 3:
+                    about();
                     break;
                 case 0:
                     break;
@@ -360,29 +359,6 @@ void menu()
 		}
 
 		if(coodinate == 18)
-		{
-            switch (choose)
-            {
-                case 1:
-                    textColor(14);
-                    gotoxy(37, 17); printf("  ABOUT        ");
-                    textColor(202);
-                    gotoxy(37, 18); printf("%c  HIGHT SCORE  ", 175);
-                    break;
-                case 2:
-                    textColor(14);
-                    gotoxy(37, 19); printf("  EXIT        ");
-                    textColor(202);
-                    gotoxy(37, 18); printf("%c  HIGHT SCORE  ", 175);
-                    break;    
-                case 3:
-                    break;
-                case 0:
-                    break;
-            }
-		}
-
-		if(coodinate == 19)
 		{
             switch (choose)
             {
@@ -410,14 +386,10 @@ void menu()
             }
 		}
 	}while(choose != 3);
-
-    _getch();
-    clearScreen();
-    gotoxy(0, 0);
-    Sleep(500);
 }
 
 void about() {
+    clearScreen();
     textColor(10);
     gotoxy(24, 8);  printf("============================================");
     gotoxy(24, 9);  printf("               ABOUT THIS GAME              ");
@@ -435,14 +407,16 @@ void about() {
     textColor(14);
     gotoxy(26, 23); printf("Cam on thay da huong dan nhom thuc hien.");
     textColor(10);
-    gotoxy(26, 25); printf("Nhan phim bat ky de tiep tuc...");
+    gotoxy(26, 25); printf("Nhan phim bat ky de tro ve bang chon...");
     _getch();
     clearScreen();
     // Thời gian chuyển khung hình
     Sleep(500);
+    menu();
 }
 
 void help() {
+    clearScreen();
     textColor(10);
     gotoxy(24, 8);  printf("============================================");
     gotoxy(24, 9);  printf("              GAME INSTRUCTIONS             ");
@@ -460,8 +434,10 @@ void help() {
     gotoxy(26, 21); printf("    - Muc tieu: Dat diem cao nhat!");
     
     textColor(10);
-    gotoxy(26, 25); printf("Nhan phim bat ky de bat dau...");
+    gotoxy(26, 25); printf("Nhan phim bat ky de tro ve bang chon...");
     _getch();
     clearScreen();
+    // Thời gian chuyển khung hình
     Sleep(500);
+    menu();
 }
