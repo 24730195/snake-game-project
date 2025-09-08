@@ -25,11 +25,6 @@
 - Result: ✅ = Pass, ❌ = Fail  
 - Note: Ghi mô tả ngắn gọn khi fail (ví dụ: "không tăng điểm").  
 
-# RESULT_TEST.md
-
-## Phiên bản
-- Commit ID: 5399bc3
-
 ---
 
 ## TC01 - Start game
