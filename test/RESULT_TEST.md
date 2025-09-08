@@ -3,7 +3,7 @@
 ## 1. Summary
 - Ngày test: 8/9/2025
 - Tester: Dương
-- Phiên bản (commit ID): 2259f69
+- Phiên bản (commit ID): 33812bb
 
 ---
 
