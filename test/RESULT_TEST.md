@@ -1,7 +1,7 @@
 # RESULT TEST - Snake Game
 
 ## 1. Summary
-- Ngày test: 
+- Ngày test: 8/9/2025
 - Tester: Dương
 - Phiên bản (commit ID): 
 
@@ -28,9 +28,7 @@
 ---
 
 ## 3. Bug Report
-- Nếu có bug → comment link issue trực tiếp dưới **Pull Request** liên quan.  
-- Ghi lại thông tin ở đây để tiện theo dõi:  
-  (VD: **TC-XX** → PR `feature/...` → Mô tả bug)
+- None - Không phát hiện bug trong quá trình test.
 
 ---
 
